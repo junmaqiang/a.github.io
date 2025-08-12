@@ -1,0 +1,1265 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>时光倒流 | 专业抗衰中心</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind 配置 -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#165DFF',
+            secondary: '#A855F7',
+            accent: '#10B981',
+            dark: '#1F2937',
+            light: '#F9FAFB'
+          },
+          fontFamily: {
+            inter: ['Inter', 'sans-serif'],
+          },
+        },
+      }
+    }
+  </script>
+
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .content-auto {
+        content-visibility: auto;
+      }
+      .text-shadow {
+        text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      }
+      .text-shadow-lg {
+        text-shadow: 0 4px 8px rgba(0,0,0,0.12), 0 2px 4px rgba(0,0,0,0.08);
+      }
+      .bg-blur {
+        backdrop-filter: blur(8px);
+      }
+      .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+      }
+      .card-hover {
+        @apply transition-all duration-300 hover:shadow-xl hover:-translate-y-1;
+      }
+      .btn-primary {
+        @apply bg-primary hover:bg-primary/90 text-white font-medium py-3 px-6 rounded-full transition-all duration-300 shadow-lg hover:shadow-primary/30 hover:-translate-y-0.5;
+      }
+      .btn-secondary {
+        @apply bg-white hover:bg-gray-50 text-primary border border-primary font-medium py-3 px-6 rounded-full transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-0.5;
+      }
+    }
+  </style>
+</head>
+
+<body class="font-inter text-dark bg-light antialiased">
+<!-- 导航栏 -->
+<header id="navbar" class="fixed w-full z-50 transition-all duration-300">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center py-4">
+      <a href="#" class="flex items-center space-x-2">
+        <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
+          <i class="fa fa-clock-o text-white text-xl"></i>
+        </div>
+        <span class="text-xl font-bold text-white text-shadow">时光倒流</span>
+      </a>
+
+      <!-- 桌面导航 -->
+      <nav class="hidden md:flex items-center space-x-8">
+        <a href="#home" class="text-white hover:text-primary/90 transition-colors font-medium">首页</a>
+        <a href="#services" class="text-white hover:text-primary/90 transition-colors font-medium">抗衰服务</a>
+        <a href="#products" class="text-white hover:text-primary/90 transition-colors font-medium">产品系列</a>
+        <a href="#experts" class="text-white hover:text-primary/90 transition-colors font-medium">专家团队</a>
+        <a href="#testimonials" class="text-white hover:text-primary/90 transition-colors font-medium">客户见证</a>
+        <a href="#contact" class="btn-primary">立即预约</a>
+      </nav>
+
+      <!-- 移动端菜单按钮 -->
+      <button id="menu-toggle" class="md:hidden text-white text-2xl">
+        <i class="fa fa-bars"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- 移动端导航菜单 -->
+  <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg absolute w-full">
+    <div class="container mx-auto px-4 py-3 flex flex-col space-y-3">
+      <a href="#home" class="text-dark hover:text-primary py-2 border-b border-gray-100">首页</a>
+      <a href="#services" class="text-dark hover:text-primary py-2 border-b border-gray-100">抗衰服务</a>
+      <a href="#products" class="text-dark hover:text-primary py-2 border-b border-gray-100">产品系列</a>
+      <a href="#experts" class="text-dark hover:text-primary py-2 border-b border-gray-100">专家团队</a>
+      <a href="#testimonials" class="text-dark hover:text-primary py-2 border-b border-gray-100">客户见证</a>
+      <a href="#contact" class="btn-primary text-center">立即预约</a>
+    </div>
+  </div>
+</header>
+
+<!-- 英雄区域 -->
+<section id="home" class="relative h-screen flex items-center justify-center overflow-hidden">
+  <div class="absolute inset-0 z-0">
+    <img src="https://picsum.photos/id/64/1920/1080" alt="抗衰美容背景" class="w-full h-full object-cover">
+    <div class="absolute inset-0 bg-dark/50"></div>
+  </div>
+
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+    <h1 class="text-[clamp(2.5rem,6vw,4.5rem)] font-bold text-white leading-tight text-shadow-lg mb-6 animate-fade-in-up">
+      逆转时光，<br class="md:hidden">重获年轻活力
+    </h1>
+    <p class="text-[clamp(1rem,2vw,1.25rem)] text-gray-100 max-w-2xl mx-auto mb-10 text-shadow">
+      专业抗衰方案，科学延缓衰老，让您焕发青春光彩，重拾自信与活力
+    </p>
+    <div class="flex flex-col sm:flex-row justify-center gap-4">
+      <a href="#services" class="btn-primary">探索抗衰服务</a>
+      <a href="#contact" class="btn-secondary">免费咨询</a>
+    </div>
+  </div>
+
+  <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 text-white animate-bounce">
+    <a href="#about" class="flex flex-col items-center">
+      <span class="mb-2 text-sm">了解更多</span>
+      <i class="fa fa-angle-down text-2xl"></i>
+    </a>
+  </div>
+</section>
+
+<!-- 关于抗衰 -->
+<section id="about" class="py-20 bg-white">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col lg:flex-row items-center gap-12">
+      <div class="lg:w-1/2 reveal">
+        <span class="text-primary font-semibold">关于抗衰</span>
+        <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-dark mt-2 mb-6">科学抗衰，不止于表面</h2>
+        <p class="text-gray-600 mb-6 leading-relaxed">
+          衰老是自然过程，但通过科学方法，我们可以延缓衰老迹象，提升生活质量。我们的抗衰方案结合先进技术与医学理论，从内到外全方位改善您的肌肤状态与身体机能。
+        </p>
+        <p class="text-gray-600 mb-8 leading-relaxed">
+          我们拥有多年临床经验，专注于提供个性化抗衰方案，针对不同年龄、肤质和需求，定制专属治疗计划，帮助您实现健康年轻的目标。
+        </p>
+
+        <div class="grid grid-cols-2 gap-6 mb-8">
+          <div class="flex items-start">
+            <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mr-4 flex-shrink-0">
+              <i class="fa fa-flask text-primary text-xl"></i>
+            </div>
+            <div>
+              <h3 class="font-semibold text-lg mb-2">科学配方</h3>
+              <p class="text-gray-600 text-sm">基于临床研究的有效成分</p>
+            </div>
+          </div>
+          <div class="flex items-start">
+            <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mr-4 flex-shrink-0">
+              <i class="fa fa-user-md text-primary text-xl"></i>
+            </div>
+            <div>
+              <h3 class="font-semibold text-lg mb-2">专业团队</h3>
+              <p class="text-gray-600 text-sm">资深抗衰专家全程指导</p>
+            </div>
+          </div>
+          <div class="flex items-start">
+            <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mr-4 flex-shrink-0">
+              <i class="fa fa-star text-primary text-xl"></i>
+            </div>
+            <div>
+              <h3 class="font-semibold text-lg mb-2">个性化方案</h3>
+              <p class="text-gray-600 text-sm">量身定制专属抗衰计划</p>
+            </div>
+          </div>
+          <div class="flex items-start">
+            <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mr-4 flex-shrink-0">
+              <i class="fa fa-heartbeat text-primary text-xl"></i>
+            </div>
+            <div>
+              <h3 class="font-semibold text-lg mb-2">健康安全</h3>
+              <p class="text-gray-600 text-sm">严格把控每一个环节</p>
+            </div>
+          </div>
+        </div>
+
+        <a href="#services" class="btn-primary inline-block">了解我们的服务</a>
+      </div>
+
+      <div class="lg:w-1/2 relative reveal">
+        <div class="relative z-10 rounded-2xl overflow-hidden shadow-2xl">
+          <img src="https://picsum.photos/id/237/800/1000" alt="抗衰护理" class="w-full h-auto">
+        </div>
+        <div class="absolute -bottom-6 -left-6 w-64 h-64 bg-secondary/20 rounded-full -z-10"></div>
+        <div class="absolute -top-6 -right-6 w-48 h-48 bg-primary/20 rounded-full -z-10"></div>
+
+        <div class="absolute -bottom-8 left-1/2 transform -translate-x-1/2 bg-white p-4 rounded-lg shadow-xl w-3/4 max-w-xs">
+          <div class="flex items-center mb-3">
+            <div class="flex">
+              <i class="fa fa-star text-yellow-400"></i>
+              <i class="fa fa-star text-yellow-400"></i>
+              <i class="fa fa-star text-yellow-400"></i>
+              <i class="fa fa-star text-yellow-400"></i>
+              <i class="fa fa-star text-yellow-400"></i>
+            </div>
+            <span class="ml-2 text-gray-600 font-medium">5.0</span>
+          </div>
+          <p class="text-gray-700 italic text-sm">"经过3个月的治疗，我的皮肤状态明显改善，看起来年轻了至少5岁，非常满意！"</p>
+          <div class="flex items-center mt-3">
+            <img src="https://picsum.photos/id/64/100/100" alt="客户头像" class="w-10 h-10 rounded-full object-cover">
+            <div class="ml-3">
+              <p class="font-medium text-sm">李女士</p>
+              <p class="text-gray-500 text-xs">38岁 · 抗衰套餐用户</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 抗衰数据 -->
+<section class="py-16 bg-primary/5">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+      <div class="p-6 reveal">
+        <div class="text-4xl md:text-5xl font-bold text-primary mb-2" id="counter1">0</div>
+        <p class="text-gray-600">满意客户</p>
+      </div>
+      <div class="p-6 reveal">
+        <div class="text-4xl md:text-5xl font-bold text-primary mb-2" id="counter2">0</div>
+        <p class="text-gray-600">成功案例</p>
+      </div>
+      <div class="p-6 reveal">
+        <div class="text-4xl md:text-5xl font-bold text-primary mb-2" id="counter3">0</div>
+        <p class="text-gray-600">专业医师</p>
+      </div>
+      <div class="p-6 reveal">
+        <div class="text-4xl md:text-5xl font-bold text-primary mb-2" id="counter4">0</div>
+        <p class="text-gray-600">抗衰项目</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 抗衰服务 -->
+<section id="services" class="py-20 bg-white">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+      <span class="text-primary font-semibold">我们的服务</span>
+      <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-dark mt-2 mb-4">全方位抗衰解决方案</h2>
+      <p class="text-gray-600">
+        我们提供多种先进的抗衰服务，从非手术治疗到深度护理，满足不同需求，帮助您恢复年轻活力
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- 服务1 -->
+      <div class="bg-white rounded-xl overflow-hidden shadow-lg card-hover reveal">
+        <div class="relative">
+          <img src="https://picsum.photos/id/21/600/400" alt="面部抗衰护理" class="w-full h-60 object-cover">
+          <div class="absolute top-4 left-4 bg-primary text-white text-sm font-medium py-1 px-3 rounded-full">
+            最受欢迎
+          </div>
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold mb-3">面部抗衰护理</h3>
+          <p class="text-gray-600 mb-4">
+            结合先进技术与天然成分，深层滋养肌肤，减少皱纹，提升紧致度，恢复面部年轻光彩。
+          </p>
+          <div class="flex justify-between items-center">
+            <span class="text-primary font-bold text-xl">¥1,280</span>
+            <a href="#contact" class="text-primary font-medium hover:text-primary/80 transition-colors">
+              了解详情 <i class="fa fa-arrow-right ml-1"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 服务2 -->
+      <div class="bg-white rounded-xl overflow-hidden shadow-lg card-hover reveal">
+        <div class="relative">
+          <img src="https://picsum.photos/id/28/600/400" alt="身体塑形抗衰" class="w-full h-60 object-cover">
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold mb-3">身体塑形抗衰</h3>
+          <p class="text-gray-600 mb-4">
+            针对身体不同部位的衰老问题，通过专业技术促进新陈代谢，紧致肌肤，塑造年轻体态。
+          </p>
+          <div class="flex justify-between items-center">
+            <span class="text-primary font-bold text-xl">¥1,880</span>
+            <a href="#contact" class="text-primary font-medium hover:text-primary/80 transition-colors">
+              了解详情 <i class="fa fa-arrow-right ml-1"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 服务3 -->
+      <div class="bg-white rounded-xl overflow-hidden shadow-lg card-hover reveal">
+        <div class="relative">
+          <img src="https://picsum.photos/id/45/600/400" alt="抗衰注射疗法" class="w-full h-60 object-cover">
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold mb-3">抗衰注射疗法</h3>
+          <p class="text-gray-600 mb-4">
+            由专业医师操作的安全注射疗法，有效填充皱纹，提升面部轮廓，效果自然持久。
+          </p>
+          <div class="flex justify-between items-center">
+            <span class="text-primary font-bold text-xl">¥2,580</span>
+            <a href="#contact" class="text-primary font-medium hover:text-primary/80 transition-colors">
+              了解详情 <i class="fa fa-arrow-right ml-1"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 服务4 -->
+      <div class="bg-white rounded-xl overflow-hidden shadow-lg card-hover reveal">
+        <div class="relative">
+          <img src="https://picsum.photos/id/65/600/400" alt="激光抗衰治疗" class="w-full h-60 object-cover">
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold mb-3">激光抗衰治疗</h3>
+          <p class="text-gray-600 mb-4">
+            采用先进激光技术，刺激胶原蛋白再生，改善肤色不均，减少细纹，实现肌肤年轻化。
+          </p>
+          <div class="flex justify-between items-center">
+            <span class="text-primary font-bold text-xl">¥3,280</span>
+            <a href="#contact" class="text-primary font-medium hover:text-primary/80 transition-colors">
+              了解详情 <i class="fa fa-arrow-right ml-1"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 服务5 -->
+      <div class="bg-white rounded-xl overflow-hidden shadow-lg card-hover reveal">
+        <div class="relative">
+          <img src="https://picsum.photos/id/76/600/400" alt="抗衰养生调理" class="w-full h-60 object-cover">
+          <div class="absolute top-4 left-4 bg-secondary text-white text-sm font-medium py-1 px-3 rounded-full">
+            新品推荐
+          </div>
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold mb-3">抗衰养生调理</h3>
+          <p class="text-gray-600 mb-4">
+            从内部调理身体机能，结合中医理论与现代营养学，延缓衰老，提升整体健康状态。
+          </p>
+          <div class="flex justify-between items-center">
+            <span class="text-primary font-bold text-xl">¥980</span>
+            <a href="#contact" class="text-primary font-medium hover:text-primary/80 transition-colors">
+              了解详情 <i class="fa fa-arrow-right ml-1"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 服务6 -->
+      <div class="bg-white rounded-xl overflow-hidden shadow-lg card-hover reveal">
+        <div class="relative">
+          <img src="https://picsum.photos/id/91/600/400" alt="定制抗衰套餐" class="w-full h-60 object-cover">
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold mb-3">定制抗衰套餐</h3>
+          <p class="text-gray-600 mb-4">
+            根据个人情况定制的全方位抗衰方案，结合多种治疗手段，长期维护年轻状态。
+          </p>
+          <div class="flex justify-between items-center">
+            <span class="text-primary font-bold text-xl">¥5,880</span>
+            <a href="#contact" class="text-primary font-medium hover:text-primary/80 transition-colors">
+              了解详情 <i class="fa fa-arrow-right ml-1"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center mt-12">
+      <a href="#contact" class="btn-primary inline-block">预约体验</a>
+    </div>
+  </div>
+</section>
+
+<!-- 抗衰过程 -->
+<section class="py-20 bg-primary/5">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+      <span class="text-primary font-semibold">抗衰流程</span>
+      <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-dark mt-2 mb-4">我们的专业抗衰步骤</h2>
+      <p class="text-gray-600">
+        每一个抗衰项目都遵循科学严谨的流程，确保安全有效，为您带来最佳体验和效果
+      </p>
+    </div>
+
+    <div class="relative">
+      <!-- 连接线 -->
+      <div class="hidden md:block absolute left-1/2 top-0 bottom-0 w-1 bg-primary/20 transform -translate-x-1/2"></div>
+
+      <div class="space-y-12 md:space-y-0 relative">
+        <!-- 步骤1 -->
+        <div class="md:flex items-center justify-between reveal">
+          <div class="md:w-5/12 text-right mb-6 md:mb-0">
+            <h3 class="text-xl font-bold mb-3">专业咨询评估</h3>
+            <p class="text-gray-600">
+              详细了解您的健康状况、生活习惯和抗衰需求，进行专业皮肤检测和身体评估。
+            </p>
+          </div>
+          <div class="md:w-2/12 flex justify-center">
+            <div class="w-16 h-16 rounded-full bg-primary text-white flex items-center justify-center font-bold text-xl shadow-lg relative z-10">
+              1
+            </div>
+          </div>
+          <div class="md:w-5/12">
+            <img src="https://picsum.photos/id/100/600/400" alt="专业咨询评估" class="rounded-lg shadow-md">
+          </div>
+        </div>
+
+        <!-- 步骤2 -->
+        <div class="md:flex items-center justify-between reveal">
+          <div class="md:w-5/12 order-1 md:order-2">
+            <img src="https://picsum.photos/id/101/600/400" alt="定制方案" class="rounded-lg shadow-md">
+          </div>
+          <div class="md:w-2/12 flex justify-center order-2 md:order-1">
+            <div class="w-16 h-16 rounded-full bg-primary text-white flex items-center justify-center font-bold text-xl shadow-lg relative z-10">
+              2
+            </div>
+          </div>
+          <div class="md:w-5/12 text-left md:text-right mb-6 md:mb-0 order-3">
+            <h3 class="text-xl font-bold mb-3">定制抗衰方案</h3>
+            <p class="text-gray-600">
+              根据评估结果，结合您的期望和需求，制定个性化的抗衰方案，选择最适合的治疗方式。
+            </p>
+          </div>
+        </div>
+
+        <!-- 步骤3 -->
+        <div class="md:flex items-center justify-between reveal">
+          <div class="md:w-5/12 text-right mb-6 md:mb-0">
+            <h3 class="text-xl font-bold mb-3">专业治疗实施</h3>
+            <p class="text-gray-600">
+              由经验丰富的专业医师操作，采用先进设备和技术，确保治疗过程安全舒适。
+            </p>
+          </div>
+          <div class="md:w-2/12 flex justify-center">
+            <div class="w-16 h-16 rounded-full bg-primary text-white flex items-center justify-center font-bold text-xl shadow-lg relative z-10">
+              3
+            </div>
+          </div>
+          <div class="md:w-5/12">
+            <img src="https://picsum.photos/id/102/600/400" alt="专业治疗实施" class="rounded-lg shadow-md">
+          </div>
+        </div>
+
+        <!-- 步骤4 -->
+        <div class="md:flex items-center justify-between reveal">
+          <div class="md:w-5/12 order-1 md:order-2">
+            <img src="https://picsum.photos/id/103/600/400" alt="术后护理与跟踪" class="rounded-lg shadow-md">
+          </div>
+          <div class="md:w-2/12 flex justify-center order-2 md:order-1">
+            <div class="w-16 h-16 rounded-full bg-primary text-white flex items-center justify-center font-bold text-xl shadow-lg relative z-10">
+              4
+            </div>
+          </div>
+          <div class="md:w-5/12 text-left md:text-right mb-6 md:mb-0 order-3">
+            <h3 class="text-xl font-bold mb-3">术后护理与跟踪</h3>
+            <p class="text-gray-600">
+              提供专业的术后护理指导，定期跟踪恢复情况，根据效果调整方案，确保最佳抗衰效果。
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 产品系列 -->
+<section id="products" class="py-20 bg-white">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+      <span class="text-primary font-semibold">抗衰产品</span>
+      <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-dark mt-2 mb-4">专业抗衰产品系列</h2>
+      <p class="text-gray-600">
+        精选高效抗衰产品，结合天然成分与科学配方，从日常护理开始，延缓衰老进程
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <!-- 产品1 -->
+      <div class="bg-white rounded-xl overflow-hidden shadow-md card-hover reveal">
+        <div class="relative">
+          <img src="https://picsum.photos/id/201/600/600" alt="焕颜精华液" class="w-full h-64 object-cover">
+          <div class="absolute top-4 right-4 bg-primary text-white text-sm font-medium py-1 px-3 rounded-full">
+            热销
+          </div>
+        </div>
+        <div class="p-4">
+          <h3 class="text-lg font-bold mb-2">焕颜精华液</h3>
+          <p class="text-gray-600 text-sm mb-3">深层滋养，紧致肌肤，减少细纹</p>
+          <div class="flex justify-between items-center">
+            <span class="text-primary font-bold">¥580</span>
+            <button class="bg-primary/10 hover:bg-primary/20 text-primary p-2 rounded-full transition-colors">
+              <i class="fa fa-shopping-cart"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 产品2 -->
+      <div class="bg-white rounded-xl overflow-hidden shadow-md card-hover reveal">
+        <div class="relative">
+          <img src="https://picsum.photos/id/202/600/600" alt="抗皱面霜" class="w-full h-64 object-cover">
+        </div>
+        <div class="p-4">
+          <h3 class="text-lg font-bold mb-2">抗皱面霜</h3>
+          <p class="text-gray-600 text-sm mb-3">锁水保湿，抚平皱纹，提升弹性</p>
+          <div class="flex justify-between items-center">
+            <span class="text-primary font-bold">¥420</span>
+            <button class="bg-primary/10 hover:bg-primary/20 text-primary p-2 rounded-full transition-colors">
+              <i class="fa fa-shopping-cart"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 产品3 -->
+      <div class="bg-white rounded-xl overflow-hidden shadow-md card-hover reveal">
+        <div class="relative">
+          <img src="https://picsum.photos/id/203/600/600" alt="修复眼霜" class="w-full h-64 object-cover">
+        </div>
+        <div class="p-4">
+          <h3 class="text-lg font-bold mb-2">修复眼霜</h3>
+          <p class="text-gray-600 text-sm mb-3">淡化黑眼圈，紧致眼周，消除眼袋</p>
+          <div class="flex justify-between items-center">
+            <span class="text-primary font-bold">¥360</span>
+            <button class="bg-primary/10 hover:bg-primary/20 text-primary p-2 rounded-full transition-colors">
+              <i class="fa fa-shopping-cart"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 产品4 -->
+      <div class="bg-white rounded-xl overflow-hidden shadow-md card-hover reveal">
+        <div class="relative">
+          <img src="https://picsum.photos/id/204/600/600" alt="抗衰面膜套装" class="w-full h-64 object-cover">
+          <div class="absolute top-4 right-4 bg-secondary text-white text-sm font-medium py-1 px-3 rounded-full">
+            新品
+          </div>
+        </div>
+        <div class="p-4">
+          <h3 class="text-lg font-bold mb-2">抗衰面膜套装</h3>
+          <p class="text-gray-600 text-sm mb-3">密集修护，提亮肤色，焕发活力</p>
+          <div class="flex justify-between items-center">
+            <span class="text-primary font-bold">¥680</span>
+            <button class="bg-primary/10 hover:bg-primary/20 text-primary p-2 rounded-full transition-colors">
+              <i class="fa fa-shopping-cart"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center mt-12">
+      <a href="#" class="btn-secondary inline-block">查看全部产品</a>
+    </div>
+  </div>
+</section>
+
+<!-- 专家团队 -->
+<section id="experts" class="py-20 bg-primary/5">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+      <span class="text-primary font-semibold">专家团队</span>
+      <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-dark mt-2 mb-4">资深抗衰专家</h2>
+      <p class="text-gray-600">
+        我们的团队由经验丰富的抗衰专家组成，拥有专业资质和多年临床经验，为您提供最专业的抗衰服务
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      <!-- 专家1 -->
+      <div class="bg-white rounded-xl overflow-hidden shadow-lg card-hover reveal">
+        <div class="relative">
+          <img src="https://picsum.photos/id/1001/600/800" alt="张医生" class="w-full h-80 object-cover">
+          <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-dark/70 to-transparent p-4">
+            <h3 class="text-white font-bold text-xl">张医生</h3>
+            <p class="text-gray-200 text-sm">抗衰医学主任</p>
+          </div>
+        </div>
+        <div class="p-5">
+          <p class="text-gray-600 text-sm mb-4">
+            拥有20年抗衰临床经验，曾赴美国、瑞士进修，擅长面部年轻化综合治疗。
+          </p>
+          <div class="flex space-x-3">
+            <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+              <i class="fa fa-linkedin"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+              <i class="fa fa-weibo"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+              <i class="fa fa-wechat"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 专家2 -->
+      <div class="bg-white rounded-xl overflow-hidden shadow-lg card-hover reveal">
+        <div class="relative">
+          <img src="https://picsum.photos/id/1002/600/800" alt="李医生" class="w-full h-80 object-cover">
+          <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-dark/70 to-transparent p-4">
+            <h3 class="text-white font-bold text-xl">李医生</h3>
+            <p class="text-gray-200 text-sm">皮肤抗衰专家</p>
+          </div>
+        </div>
+        <div class="p-5">
+          <p class="text-gray-600 text-sm mb-4">
+            皮肤医学博士，专注激光抗衰治疗15年，在国际期刊发表多篇抗衰研究论文。
+          </p>
+          <div class="flex space-x-3">
+            <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+              <i class="fa fa-linkedin"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+              <i class="fa fa-weibo"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+              <i class="fa fa-wechat"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 专家3 -->
+      <div class="bg-white rounded-xl overflow-hidden shadow-lg card-hover reveal">
+        <div class="relative">
+          <img src="https://picsum.photos/id/1003/600/800" alt="王医生" class="w-full h-80 object-cover">
+          <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-dark/70 to-transparent p-4">
+            <h3 class="text-white font-bold text-xl">王医生</h3>
+            <p class="text-gray-200 text-sm">注射抗衰专家</p>
+          </div>
+        </div>
+        <div class="p-5">
+          <p class="text-gray-600 text-sm mb-4">
+            国际认证注射医师，擅长玻尿酸、肉毒素等注射抗衰治疗，手法精准，效果自然。
+          </p>
+          <div class="flex space-x-3">
+            <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+              <i class="fa fa-linkedin"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+              <i class="fa fa-weibo"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+              <i class="fa fa-wechat"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 专家4 -->
+      <div class="bg-white rounded-xl overflow-hidden shadow-lg card-hover reveal">
+        <div class="relative">
+          <img src="https://picsum.photos/id/1004/600/800" alt="陈医生" class="w-full h-80 object-cover">
+          <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-dark/70 to-transparent p-4">
+            <h3 class="text-white font-bold text-xl">陈医生</h3>
+            <p class="text-gray-200 text-sm">抗衰养生专家</p>
+          </div>
+        </div>
+        <div class="p-5">
+          <p class="text-gray-600 text-sm mb-4">
+            中西医结合抗衰专家，专注内在调理与外在护理结合，提供全方位抗衰方案。
+          </p>
+          <div class="flex space-x-3">
+            <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+              <i class="fa fa-linkedin"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+              <i class="fa fa-weibo"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+              <i class="fa fa-wechat"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 客户见证 -->
+<section id="testimonials" class="py-20 bg-white">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+      <span class="text-primary font-semibold">客户见证</span>
+      <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-dark mt-2 mb-4">他们的抗衰之旅</h2>
+      <p class="text-gray-600">
+        来自真实客户的体验分享，见证抗衰效果，了解他们的蜕变故事
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- 见证1 -->
+      <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-100 card-hover reveal">
+        <div class="flex items-center mb-4">
+          <img src="https://picsum.photos/id/1011/100/100" alt="客户头像" class="w-14 h-14 rounded-full object-cover">
+          <div class="ml-4">
+            <h4 class="font-bold">刘女士</h4>
+            <p class="text-gray-500 text-sm">42岁 · 面部抗衰套餐</p>
+          </div>
+        </div>
+        <div class="flex mb-4">
+          <i class="fa fa-star text-yellow-400"></i>
+          <i class="fa fa-star text-yellow-400"></i>
+          <i class="fa fa-star text-yellow-400"></i>
+          <i class="fa fa-star text-yellow-400"></i>
+          <i class="fa fa-star text-yellow-400"></i>
+        </div>
+        <p class="text-gray-600 italic">
+          "治疗后朋友们都说我看起来年轻了好几岁，皮肤状态明显改善，皱纹减少了很多，整个人都自信了不少。非常感谢张医生的专业服务！"
+        </p>
+      </div>
+
+      <!-- 见证2 -->
+      <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-100 card-hover reveal">
+        <div class="flex items-center mb-4">
+          <img src="https://picsum.photos/id/1012/100/100" alt="客户头像" class="w-14 h-14 rounded-full object-cover">
+          <div class="ml-4">
+            <h4 class="font-bold">张先生</h4>
+            <p class="text-gray-500 text-sm">50岁 · 综合抗衰方案</p>
+          </div>
+        </div>
+        <div class="flex mb-4">
+          <i class="fa fa-star text-yellow-400"></i>
+          <i class="fa fa-star text-yellow-400"></i>
+          <i class="fa fa-star text-yellow-400"></i>
+          <i class="fa fa-star text-yellow-400"></i>
+          <i class="fa fa-star text-yellow-400"></i>
+        </div>
+        <p class="text-gray-600 italic">
+          "作为一名企业高管，形象对我很重要。经过半年的抗衰治疗，不仅外表年轻了，精力也更充沛，工作效率都提高了。这里的专家团队非常专业，值得信赖。"
+        </p>
+      </div>
+
+      <!-- 见证3 -->
+      <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-100 card-hover reveal">
+        <div class="flex items-center mb-4">
+          <img src="https://picsum.photos/id/1013/100/100" alt="客户头像" class="w-14 h-14 rounded-full object-cover">
+          <div class="ml-4">
+            <h4 class="font-bold">赵女士</h4>
+            <p class="text-gray-500 text-sm">35岁 · 激光抗衰治疗</p>
+          </div>
+        </div>
+        <div class="flex mb-4">
+          <i class="fa fa-star text-yellow-400"></i>
+          <i class="fa fa-star text-yellow-400"></i>
+          <i class="fa fa-star text-yellow-400"></i>
+          <i class="fa fa-star text-yellow-400"></i>
+          <i class="fa fa-star-half-o text-yellow-400"></i>
+        </div>
+        <p class="text-gray-600 italic">
+          "一直被色斑和肤色不均困扰，尝试了很多方法都没效果。李医生推荐的激光治疗效果非常好，现在皮肤又白又嫩，再也不用浓妆遮盖了，太开心了！"
+        </p>
+      </div>
+    </div>
+
+    <!-- 前后对比 -->
+    <div class="mt-20 reveal">
+      <h3 class="text-2xl font-bold text-center mb-10">真实效果对比</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="bg-white rounded-xl overflow-hidden shadow-lg">
+          <div class="p-4 bg-primary/10 text-center">
+            <h4 class="font-bold text-primary">治疗前</h4>
+          </div>
+          <img src="https://picsum.photos/id/1025/800/600" alt="治疗前" class="w-full h-auto">
+        </div>
+        <div class="bg-white rounded-xl overflow-hidden shadow-lg">
+          <div class="p-4 bg-accent/10 text-center">
+            <h4 class="font-bold text-accent">治疗后3个月</h4>
+          </div>
+          <img src="https://picsum.photos/id/1027/800/600" alt="治疗后" class="w-full h-auto">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 抗衰知识 -->
+<section class="py-20 bg-primary/5">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+      <span class="text-primary font-semibold">抗衰知识</span>
+      <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-dark mt-2 mb-4">科学抗衰小常识</h2>
+      <p class="text-gray-600">
+        了解抗衰基础知识，科学延缓衰老，从生活习惯开始，保持年轻状态
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <!-- 知识图表 -->
+      <div class="bg-white p-6 rounded-xl shadow-lg reveal">
+        <h3 class="text-xl font-bold mb-6">不同年龄段的衰老特征</h3>
+        <div class="h-80">
+          <canvas id="agingChart"></canvas>
+        </div>
+      </div>
+
+      <!-- 知识文章 -->
+      <div class="space-y-6">
+        <!-- 文章1 -->
+        <div class="bg-white rounded-xl overflow-hidden shadow-md flex flex-col sm:flex-row card-hover reveal">
+          <img src="https://picsum.photos/id/1060/400/300" alt="抗衰饮食" class="w-full sm:w-1/3 h-40 sm:h-auto object-cover">
+          <div class="p-5 sm:w-2/3">
+            <span class="text-xs text-primary font-medium bg-primary/10 px-2 py-1 rounded">饮食抗衰</span>
+            <h3 class="text-lg font-bold mt-2 mb-2">7种抗衰老超级食物</h3>
+            <p class="text-gray-600 text-sm mb-3">
+              合理的饮食可以有效延缓衰老，这7种超级食物富含抗氧化剂和必需营养素...
+            </p>
+            <a href="#" class="text-primary text-sm font-medium hover:underline">阅读更多 <i class="fa fa-angle-right ml-1"></i></a>
+          </div>
+        </div>
+
+        <!-- 文章2 -->
+        <div class="bg-white rounded-xl overflow-hidden shadow-md flex flex-col sm:flex-row card-hover reveal">
+          <img src="https://picsum.photos/id/1062/400/300" alt="抗衰运动" class="w-full sm:w-1/3 h-40 sm:h-auto object-cover">
+          <div class="p-5 sm:w-2/3">
+            <span class="text-xs text-primary font-medium bg-primary/10 px-2 py-1 rounded">运动抗衰</span>
+            <h3 class="text-lg font-bold mt-2 mb-2">每天15分钟抗衰运动</h3>
+            <p class="text-gray-600 text-sm mb-3">
+              适当的运动不仅能保持身材，还能促进血液循环，增强皮肤弹性，延缓衰老...
+            </p>
+            <a href="#" class="text-primary text-sm font-medium hover:underline">阅读更多 <i class="fa fa-angle-right ml-1"></i></a>
+          </div>
+        </div>
+
+        <!-- 文章3 -->
+        <div class="bg-white rounded-xl overflow-hidden shadow-md flex flex-col sm:flex-row card-hover reveal">
+          <img src="https://picsum.photos/id/1066/400/300" alt="睡眠与抗衰" class="w-full sm:w-1/3 h-40 sm:h-auto object-cover">
+          <div class="p-5 sm:w-2/3">
+            <span class="text-xs text-primary font-medium bg-primary/10 px-2 py-1 rounded">睡眠抗衰</span>
+            <h3 class="text-lg font-bold mt-2 mb-2">优质睡眠是最好的抗衰药</h3>
+            <p class="text-gray-600 text-sm mb-3">
+              睡眠不足会加速衰老，了解如何改善睡眠质量，让身体在睡眠中修复和再生...
+            </p>
+            <a href="#" class="text-primary text-sm font-medium hover:underline">阅读更多 <i class="fa fa-angle-right ml-1"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 预约联系 -->
+<section id="contact" class="py-20 bg-white">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col lg:flex-row gap-12">
+      <div class="lg:w-1/2 reveal">
+        <span class="text-primary font-semibold">联系我们</span>
+        <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-dark mt-2 mb-6">开始您的抗衰之旅</h2>
+        <p class="text-gray-600 mb-8">
+          填写下方表单预约免费咨询，我们的专业顾问将尽快与您联系，为您提供个性化抗衰建议和方案。
+        </p>
+
+        <form class="space-y-6">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div>
+              <label for="name" class="block text-gray-700 font-medium mb-2">姓名</label>
+              <input type="text" id="name" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors" placeholder="请输入您的姓名">
+            </div>
+            <div>
+              <label for="phone" class="block text-gray-700 font-medium mb-2">电话</label>
+              <input type="tel" id="phone" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors" placeholder="请输入您的电话">
+            </div>
+          </div>
+
+          <div>
+            <label for="age" class="block text-gray-700 font-medium mb-2">年龄</label>
+            <input type="text" id="age" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors" placeholder="请输入您的年龄">
+          </div>
+
+          <div>
+            <label for="concern" class="block text-gray-700 font-medium mb-2">您关注的抗衰问题</label>
+            <select id="concern" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors">
+              <option value="" selected disabled>请选择</option>
+              <option value="wrinkles">皱纹问题</option>
+              <option value="skin-tone">肤色不均</option>
+              <option value="sagging">皮肤松弛</option>
+              <option value="body-shape">身材管理</option>
+              <option value="other">其他问题</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="message" class="block text-gray-700 font-medium mb-2">留言</label>
+            <textarea id="message" rows="4" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors" placeholder="请输入您的具体需求或疑问"></textarea>
+          </div>
+
+          <button type="submit" class="btn-primary w-full">提交预约</button>
+        </form>
+      </div>
+
+      <div class="lg:w-1/2 reveal">
+        <div class="bg-primary/5 rounded-2xl p-8 h-full">
+          <h3 class="text-2xl font-bold mb-6">联系方式</h3>
+
+          <div class="space-y-6 mb-10">
+            <div class="flex items-start">
+              <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mr-4 flex-shrink-0">
+                <i class="fa fa-map-marker text-primary text-xl"></i>
+              </div>
+              <div>
+                <h4 class="font-semibold text-lg mb-1">地址</h4>
+                <p class="text-gray-600">上海市浦东新区张江基因岛2号楼2层</p>
+              </div>
+            </div>
+
+            <div class="flex items-start">
+              <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mr-4 flex-shrink-0">
+                <i class="fa fa-phone text-primary text-xl"></i>
+              </div>
+              <div>
+                <h4 class="font-semibold text-lg mb-1">电话</h4>
+                <p class="text-gray-600">400-888-9999</p>
+              </div>
+            </div>
+
+            <div class="flex items-start">
+              <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mr-4 flex-shrink-0">
+                <i class="fa fa-envelope text-primary text-xl"></i>
+              </div>
+              <div>
+                <h4 class="font-semibold text-lg mb-1">邮箱</h4>
+                <p class="text-gray-600">e@yeskss.com</p>
+              </div>
+            </div>
+
+            <div class="flex items-start">
+              <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mr-4 flex-shrink-0">
+                <i class="fa fa-clock-o text-primary text-xl"></i>
+              </div>
+              <div>
+                <h4 class="font-semibold text-lg mb-1">营业时间</h4>
+                <p class="text-gray-600">周一至周五: 09:00 - 21:00</p>
+                <p class="text-gray-600">周六至周日: 10:00 - 19:00</p>
+              </div>
+            </div>
+          </div>
+
+          <h3 class="text-2xl font-bold mb-6">关注我们</h3>
+          <div class="flex space-x-4">
+            <a href="#" class="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center hover:bg-primary/90 transition-colors">
+              <i class="fa fa-weibo"></i>
+            </a>
+            <a href="#" class="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center hover:bg-primary/90 transition-colors">
+              <i class="fa fa-wechat"></i>
+            </a>
+            <a href="#" class="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center hover:bg-primary/90 transition-colors">
+              <i class="fa fa-instagram"></i>
+            </a>
+            <a href="#" class="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center hover:bg-primary/90 transition-colors">
+              <i class="fa fa-youtube-play"></i>
+            </a>
+          </div>
+
+          <div class="mt-10">
+            <h3 class="text-2xl font-bold mb-6">位置地图</h3>
+            <div class="rounded-xl overflow-hidden h-64 bg-gray-200">
+              <!-- 这里可以嵌入实际地图 -->
+              <img src="https://picsum.photos/id/1031/800/400" alt="位置地图" class="w-full h-full object-cover">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 页脚 -->
+<footer class="bg-dark text-white pt-16 pb-8">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+      <div>
+        <a href="#" class="flex items-center space-x-2 mb-6">
+          <div class="w-10 h-10 rounded-full bg-white flex items-center justify-center">
+            <i class="fa fa-clock-o text-primary text-xl"></i>
+          </div>
+          <span class="text-xl font-bold">时光倒流</span>
+        </a>
+        <p class="text-gray-400 mb-6">
+          专业抗衰中心，致力于为您提供科学、安全、有效的抗衰方案，让时光为您停留。
+        </p>
+        <div class="flex space-x-4">
+          <a href="#" class="text-gray-400 hover:text-white transition-colors">
+            <i class="fa fa-weibo"></i>
+          </a>
+          <a href="#" class="text-gray-400 hover:text-white transition-colors">
+            <i class="fa fa-wechat"></i>
+          </a>
+          <a href="#" class="text-gray-400 hover:text-white transition-colors">
+            <i class="fa fa-instagram"></i>
+          </a>
+          <a href="#" class="text-gray-400 hover:text-white transition-colors">
+            <i class="fa fa-youtube-play"></i>
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="text-lg font-bold mb-6">快速链接</h4>
+        <ul class="space-y-3">
+          <li><a href="#home" class="text-gray-400 hover:text-white transition-colors">首页</a></li>
+          <li><a href="#about" class="text-gray-400 hover:text-white transition-colors">关于我们</a></li>
+          <li><a href="#services" class="text-gray-400 hover:text-white transition-colors">抗衰服务</a></li>
+          <li><a href="#products" class="text-gray-400 hover:text-white transition-colors">产品系列</a></li>
+          <li><a href="#experts" class="text-gray-400 hover:text-white transition-colors">专家团队</a></a></li>
+          <li><a href="#testimonials" class="text-gray-400 hover:text-white transition-colors">客户见证</a></li>
+          <li><a href="#contact" class="text-gray-400 hover:text-white transition-colors">联系我们</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="text-lg font-bold mb-6">抗衰服务</h4>
+        <ul class="space-y-3">
+          <li><a href="#" class="text-gray-400 hover:text-white transition-colors">面部抗衰护理</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-white transition-colors">身体塑形抗衰</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-white transition-colors">抗衰注射疗法</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-white transition-colors">激光抗衰治疗</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-white transition-colors">抗衰养生调理</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-white transition-colors">定制抗衰套餐</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="text-lg font-bold mb-6">联系我们</h4>
+        <ul class="space-y-3">
+          <li class="flex items-start">
+            <i class="fa fa-map-marker text-primary mt-1 mr-3"></i>
+            <span class="text-gray-400">上海市浦东新区张江基因岛2号楼2层</span>
+          </li>
+          <li class="flex items-center">
+            <i class="fa fa-phone text-primary mr-3"></i>
+            <span class="text-gray-400">400-888-9999</span>
+          </li>
+          <li class="flex items-center">
+            <i class="fa fa-envelope text-primary mr-3"></i>
+            <span class="text-gray-400">e@yeskss.com</span>
+          </li>
+          <li class="flex items-center">
+            <i class="fa fa-clock-o text-primary mr-3"></i>
+            <span class="text-gray-400">09:00-21:00 (周一至周五)</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="border-t border-gray-800 pt-8">
+      <div class="flex flex-col md:flex-row justify-between items-center">
+        <p class="text-gray-500 text-sm mb-4 md:mb-0">
+          &copy; 2025 时光倒流抗衰中心. 保留所有权利.
+        </p>
+        <div class="flex space-x-6">
+          <a href="#" class="text-gray-500 hover:text-gray-300 text-sm">隐私政策</a>
+          <a href="#" class="text-gray-500 hover:text-gray-300 text-sm">服务条款</a>
+          <a href="#" class="text-gray-500 hover:text-gray-300 text-sm">网站地图</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- 返回顶部按钮 -->
+<button id="back-to-top" class="fixed bottom-8 right-8 bg-primary text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg opacity-0 invisible transition-all duration-300 z-50">
+  <i class="fa fa-angle-up text-xl"></i>
+</button>
+
+<!-- JavaScript -->
+<script>
+  // 导航栏滚动效果
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+      navbar.classList.add('bg-dark/90', 'bg-blur', 'shadow-lg');
+      navbar.classList.remove('py-4');
+      navbar.classList.add('py-2');
+    } else {
+      navbar.classList.remove('bg-dark/90', 'bg-blur', 'shadow-lg');
+      navbar.classList.remove('py-2');
+      navbar.classList.add('py-4');
+    }
+  });
+
+  // 移动端菜单切换
+  const menuToggle = document.getElementById('menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+  menuToggle.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+    const icon = menuToggle.querySelector('i');
+    if (icon.classList.contains('fa-bars')) {
+      icon.classList.remove('fa-bars');
+      icon.classList.add('fa-times');
+    } else {
+      icon.classList.remove('fa-times');
+      icon.classList.add('fa-bars');
+    }
+  });
+
+  // 平滑滚动
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+
+      // 关闭移动菜单（如果打开）
+      if (!mobileMenu.classList.contains('hidden')) {
+        mobileMenu.classList.add('hidden');
+        const icon = menuToggle.querySelector('i');
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-bars');
+      }
+
+      const targetId = this.getAttribute('href');
+      const targetElement = document.querySelector(targetId);
+      if (targetElement) {
+        window.scrollTo({
+          top: targetElement.offsetTop - 80,
+          behavior: 'smooth'
+        });
+      }
+    });
+  });
+
+  // 返回顶部按钮
+  const backToTopButton = document.getElementById('back-to-top');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) {
+      backToTopButton.classList.remove('opacity-0', 'invisible');
+      backToTopButton.classList.add('opacity-100', 'visible');
+    } else {
+      backToTopButton.classList.add('opacity-0', 'invisible');
+      backToTopButton.classList.remove('opacity-100', 'visible');
+    }
+  });
+
+  backToTopButton.addEventListener('click', () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+
+  // 数字计数器动画
+  function animateCounter(element, target, duration = 2000) {
+    let start = 0;
+    const increment = target / (duration / 16);
+    const timer = setInterval(() => {
+      start += increment;
+      if (start >= target) {
+        clearInterval(timer);
+        element.textContent = target.toLocaleString();
+      } else {
+        element.textContent = Math.floor(start).toLocaleString();
+      }
+    }, 16);
+  }
+
+  // 滚动显示动画
+  const revealElements = document.querySelectorAll('.reveal');
+  const revealOnScroll = () => {
+    revealElements.forEach(element => {
+      const elementTop = element.getBoundingClientRect().top;
+      const elementVisible = 150;
+      if (elementTop < window.innerHeight - elementVisible) {
+        element.classList.add('animate-fade-in-up');
+        element.classList.add('opacity-100');
+        element.classList.remove('opacity-0', 'translate-y-8');
+      }
+    });
+
+    // 检查计数器元素是否可见
+    const counter1 = document.getElementById('counter1');
+    if (counter1 && !counter1.classList.contains('counted') &&
+            counter1.getBoundingClientRect().top < window.innerHeight - 150) {
+      counter1.classList.add('counted');
+      animateCounter(counter1, 12000);
+      animateCounter(document.getElementById('counter2'), 8500);
+      animateCounter(document.getElementById('counter3'), 28);
+      animateCounter(document.getElementById('counter4'), 36);
+    }
+  };
+
+  // 添加初始样式
+  revealElements.forEach(element => {
+    element.classList.add('transition-all', 'duration-700', 'opacity-0', 'translate-y-8');
+  });
+
+  // 初始检查
+  window.addEventListener('load', revealOnScroll);
+  // 滚动时检查
+  window.addEventListener('scroll', revealOnScroll);
+
+  // 年龄相关的衰老特征图表
+  window.addEventListener('load', () => {
+    const ctx = document.getElementById('agingChart');
+    if (ctx) {
+      new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: ['20岁', '25岁', '30岁', '35岁', '40岁', '45岁', '50岁', '55岁', '60岁'],
+          datasets: [
+            {
+              label: '皮肤弹性',
+              data: [95, 90, 82, 73, 65, 58, 50, 42, 35],
+              borderColor: '#165DFF',
+              backgroundColor: 'rgba(22, 93, 255, 0.1)',
+              tension: 0.4,
+              fill: true
+            },
+            {
+              label: '胶原蛋白含量',
+              data: [98, 92, 80, 68, 55, 45, 35, 28, 20],
+              borderColor: '#A855F7',
+              backgroundColor: 'rgba(168, 85, 247, 0.1)',
+              tension: 0.4,
+              fill: true
+            },
+            {
+              label: '新陈代谢率',
+              data: [100, 95, 90, 85, 80, 75, 70, 65, 60],
+              borderColor: '#10B981',
+              backgroundColor: 'rgba(16, 185, 129, 0.1)',
+              tension: 0.4,
+              fill: true
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'top',
+            },
+            tooltip: {
+              mode: 'index',
+              intersect: false
+            }
+          },
+          scales: {
+            y: {
+              beginAtZero: true,
+              max: 100,
+              title: {
+                display: true,
+                text: '相对水平 (%)'
+              }
+            }
+          }
+        }
+      });
+    }
+  });
+</script>
+</body>
+</html>
