@@ -4,13 +4,13 @@
 majorPattern: "^BREAKING CHANGE:.*$"
 
 # 提交信息中包含 feat 时，触发次版本号 Minor 递增
-# 比如：git commit -m "feat(): add user login"
+# 比如：git commit -m "feat: add user login"
 minorPattern: "^feat(.*?):.*$"
 
 # 提交信息中包含 fix 时，触发修订号 Patch 递增
-# 比如：git commit -m "fix(): login page crash"
-patchPattern: "^fix(.*?):.*$"
-#patchPattern: "^(fix|perf|style|ci|docs|refactor|chore)(.*?):.*$"
+# 比如：git commit -m "fix: login page crash"
+#patchPattern: "^fix:.*$"
+patchPattern: "^(fix|perf|style|ci|docs|refactor|chore):.*?$"
 # 下面是参考类型
 #  feat,fix,perf,style,
 #  ci,test,docs,
@@ -35,10 +35,11 @@ bumpStrategies:
     #
     #preReleaseTemplate: "release.{{.Commits | len}}" # 生成 1.0.0-release.1
     #preReleaseTemplate: "beta.{{.Commits | len}}" # 生成 1.0.0-beta.1
-    preReleaseTemplate: "alpha.{{.Commits | len}}" # 生成 1.0.0-alpha.1
+#    preReleaseTemplate: "alpha.{{.Commits | len}}" # 生成 1.0.0-alpha.1
+    preReleaseTemplate: "alpha" # 生成 1.0.0-alpha
     #
-    preReleaseOverwrite: false # 1.0.0-alpha.1.0
-#    preReleaseOverwrite: true # 1.0.0-alpha.1
+#    preReleaseOverwrite: false # 1.0.0-alpha.1.0
+    preReleaseOverwrite: true # 1.0.0-alpha.1
     #
 
     buildMetadataTemplate: # 定义构建元数据的模板
