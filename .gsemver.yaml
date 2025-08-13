@@ -23,11 +23,12 @@ patchPattern: "^(?:fix|perf|style|ci|docs|refactor|chore)(?:\(.+\))?:.*$"
 
 # 定义不同分支的版本号递增策略
 bumpStrategies:
-  # - branchesPattern: "master|release/*" # 发布分支策略
-#  - branchesPattern: "main|master" # 主分支策略
-    # - branchesPattern: "develop/*" # 开发分支策略
-    # - branchesPattern: "master/*" # 主分支策略
-  - branchesPattern: ".*" # 所有分支策略
+# - branchesPattern: "master|release/*" # 发布分支策略
+# - branchesPattern: "main|master" # 主分支策略
+  - branchesPattern: "main" # 主分支策略
+# - branchesPattern: "develop/*" # 开发分支策略
+# - branchesPattern: "master/*" # 主分支策略
+#  - branchesPattern: ".*" # 所有分支策略
     #
     strategy: "AUTO" # 自动根据提交信息决定版本号的递增方式（Major、Minor 或 Patch）
     #
@@ -37,15 +38,15 @@ bumpStrategies:
     #
     #preReleaseTemplate: "release.{{.Commits | len}}" # 生成 1.0.0-release.1
     #preReleaseTemplate: "beta.{{.Commits | len}}" # 生成 1.0.0-beta.1
-#    preReleaseTemplate: "alpha.{{.Commits | len}}" # 生成 1.0.0-alpha.1
+    preReleaseTemplate: "alpha.{{.Commits | len}}" # 生成 1.0.0-alpha.1
     #
 #    preReleaseOverwrite: false # 1.0.0-alpha.1
     preReleaseOverwrite: true # 1.0.0-alpha
     #
 
-    buildMetadataTemplate: # 定义构建元数据的模板
+    #buildMetadataTemplate: # 定义构建元数据的模板
     #buildMetadataTemplate: "{{.Commits | len}}.{{(.Commits | first).Author.Name}}" # 生成 1.0.0+2.author
-    #buildMetadataTemplate: "{{.Commits | len}}.{{(.Commits | first).Hash.Short}}" # 生成 1.0.0+2.a1b2c3d （2：提交次数；a1b2c3d：最新提交的短哈希前7位；）
+    buildMetadataTemplate: "{{.Commits | len}}.{{(.Commits | first).Hash.Short}}" # 生成 1.0.0+2.a1b2c3d （2：提交次数；a1b2c3d：最新提交的短哈希前7位；）
     #buildMetadataTemplate: "{{.CurrentBranch | replace \"/\" \"-\"}}" # 生成 1.0.0+master
     #buildMetadataTemplate: "{{.Now.Format \"20060102\"}}" # 生成 1.0.0+20240315
     
