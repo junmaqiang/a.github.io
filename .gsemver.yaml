@@ -9,9 +9,6 @@ minorPattern: "^feat(.*?):.*$"
 
 # 提交信息中包含 fix 时，触发修订号 Patch 递增
 # 比如：git commit -m "fix(): login page crash"
-#patchPattern: "^fix(.*?):.*$"
-#patchPattern: "^fix(.*?):.*$"
-#patchPattern: "^fix(?:\(.+\))?:.*$"
 patchPattern: "^fix(.*?):.*$"
 #patchPattern: "^(fix|perf|style|ci|docs|refactor|chore)(.*?):.*$"
 # 下面是参考类型
@@ -40,8 +37,8 @@ bumpStrategies:
     #preReleaseTemplate: "beta.{{.Commits | len}}" # 生成 1.0.0-beta.1
     preReleaseTemplate: "alpha.{{.Commits | len}}" # 生成 1.0.0-alpha.1
     #
-    preReleaseOverwrite: false # 1.0.0-alpha.1
-#    preReleaseOverwrite: true # 1.0.0-alpha
+    preReleaseOverwrite: false # 1.0.0-alpha.1.0
+#    preReleaseOverwrite: true # 1.0.0-alpha.1
     #
 
     buildMetadataTemplate: # 定义构建元数据的模板
