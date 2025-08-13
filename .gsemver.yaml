@@ -12,7 +12,7 @@ minorPattern: "^feat(.*?):.*$"
 # 提交信息中包含 fix 时，触发修订号 Patch 递增
 # 比如：git commit -m "fix: login page crash"
 #patchPattern: "^fix:.*$"
-patchPattern: "^(fix|perf|style|ci|docs|refactor|chore):.*?$"
+patchPattern: "^(fix|perf|style|ci|docs|refactor|chore):.*$"
 # 下面是参考类型
 #  feat,fix,perf,style,
 #  ci,test,docs,
