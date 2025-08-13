@@ -1,5 +1,5 @@
 #
-# gsemver -c .gsemver.yaml dump
+# gsemver -c .gsemver.yaml bump
 #
 # 提交信息中包含 BREAKING CHANGE 字样时，触发主版本号 Major 递增
 # 比如：git commit -m "BREAKING CHANGE: remove legacy API"
@@ -24,10 +24,10 @@ patchPattern: "^(fix|perf|style|ci|docs|refactor|chore):.*$"
 bumpStrategies:
 # - branchesPattern: "master|release/*" # 发布分支策略
 # - branchesPattern: "main|master" # 主分支策略
-  - branchesPattern: "main" # 主分支策略
+#  - branchesPattern: "main" # 主分支策略
 # - branchesPattern: "develop/*" # 开发分支策略
 # - branchesPattern: "master/*" # 主分支策略
-#  - branchesPattern: ".*" # 所有分支策略
+  - branchesPattern: ".*" # 所有分支策略
     #
     strategy: "AUTO" # 自动根据提交信息决定版本号的递增方式（Major、Minor 或 Patch）
     #
