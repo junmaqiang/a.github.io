@@ -1,4 +1,6 @@
-# gsemver -C .gsemver.yaml dump
+#
+# gsemver -c .gsemver.yaml dump
+#
 # 提交信息中包含 BREAKING CHANGE 字样时，触发主版本号 Major 递增
 # 比如：git commit -m "BREAKING CHANGE: remove legacy API"
 majorPattern: "^BREAKING CHANGE:.*$"
