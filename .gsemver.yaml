@@ -1,35 +1,46 @@
+# gsemver -C .gsemver.yaml dump
 # 提交信息中包含 BREAKING CHANGE 字样时，触发主版本号 Major 递增
 # 比如：git commit -m "BREAKING CHANGE: remove legacy API"
 majorPattern: "^BREAKING CHANGE:.*$"
 
-# 提交信息中包含 feature 时，触发次版本号 Minor 递增
-# 比如：git commit -m "feature(): add user login"
-minorPattern: "^feature(.*?):.*"
+# 提交信息中包含 feat 时，触发次版本号 Minor 递增
+# 比如：git commit -m "feat(): add user login"
+minorPattern: "^feat(.*?):.*$"
 
 # 提交信息中包含 fix 时，触发修订号 Patch 递增
 # 比如：git commit -m "fix(): login page crash"
-patchPattern: "^fix(.*?):.*"
+#patchPattern: "^fix(.*?):.*$"
+#patchPattern: "^fix(.*?):.*$"
+#patchPattern: "^fix(?:\(.+\))?:.*$"
+patchPattern: "^(?:fix|perf|style|ci|docs|refactor|chore)(?:\(.+\))?:.*$"
+#patchPattern: "^(fix|perf|style|ci|docs|refactor|chore)(.*?):.*$"
+# 下面是参考类型
+#  feat,fix,perf,style,
+#  ci,test,docs,
+#  refactor,
+#  chore,
+#  BREAKING CHANGE # 这一行写法 特殊情况下才用
 
 # 定义不同分支的版本号递增策略
 bumpStrategies:
   # - branchesPattern: "master|release/*" # 发布分支策略
-  - branchesPattern: "master" # 主分支策略
+#  - branchesPattern: "main|master" # 主分支策略
     # - branchesPattern: "develop/*" # 开发分支策略
     # - branchesPattern: "master/*" # 主分支策略
-    # - branchesPattern: ".*" # 所有分支策略
+  - branchesPattern: ".*" # 所有分支策略
     #
     strategy: "AUTO" # 自动根据提交信息决定版本号的递增方式（Major、Minor 或 Patch）
     #
     # 下面三个参数和预发布有关
-    preRelease: true # 1.0.0-alpha
-    #preRelease: false # 1.0.0
+#    preRelease: true # 1.0.0-alpha
+    preRelease: false # 1.0.0
     #
     #preReleaseTemplate: "release.{{.Commits | len}}" # 生成 1.0.0-release.1
     #preReleaseTemplate: "beta.{{.Commits | len}}" # 生成 1.0.0-beta.1
-    preReleaseTemplate: "alpha.{{.Commits | len}}" # 生成 1.0.0-alpha.1
+#    preReleaseTemplate: "alpha.{{.Commits | len}}" # 生成 1.0.0-alpha.1
     #
-    preReleaseOverwrite: false # 1.0.0-alpha.1
-    #preReleaseOverwrite: true # 1.0.0-alpha
+#    preReleaseOverwrite: false # 1.0.0-alpha.1
+    preReleaseOverwrite: true # 1.0.0-alpha
     #
 
     buildMetadataTemplate: # 定义构建元数据的模板
